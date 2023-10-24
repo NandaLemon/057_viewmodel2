@@ -182,7 +182,9 @@ fun Texthasil(namanya:String,telponnya:String,jenisnya:String){
             text ="Jenis Kelamin :" + jenisnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))
-
+        Text(text = "Alamat :",
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 5.dp))
     }
 }
 
