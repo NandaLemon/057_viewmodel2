@@ -33,8 +33,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -78,6 +81,13 @@ fun TampilanLayout(
 @OptIn(ExperimentalMaterial3Api ::class)
 @Composable
 fun TampilanForm(view: View = View()){
+    Text(text = "Create Your Account",
+        fontSize = 20.sp,
+        color = Color.Black,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center
+    )
+
     var textNama by remember{ mutableStateOf("") }
     var textTlp by remember{ mutableStateOf("") }
     var textem by remember{ mutableStateOf("") }
@@ -165,6 +175,9 @@ fun SelectJK(
 
     Column(modifier = Modifier.padding(16.dp)) {
         options.forEach { item ->
+            Text(text = "Jenis Kelamin", fontSize = 18.sp, textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
             Row (
                 modifier = Modifier.selectable(
                     selected = selectedValue == item,
@@ -184,6 +197,7 @@ fun SelectJK(
                 )
                 Text(item)
             }
+
 
         }
     }
