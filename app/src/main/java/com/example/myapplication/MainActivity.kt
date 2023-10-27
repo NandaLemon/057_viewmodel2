@@ -134,6 +134,12 @@ fun TampilanForm(view: View = View()){
         onSelectionChanged = {
             view.setJenisK(it)
         })
+    SelectST(
+        options = jenis.map { id -> context.resources.getString(id)},
+        onSelectionChanged = {
+            view.setJenisK(it)
+        })
+
     OutlinedTextField(
         value = textamt ,
         singleLine = true,
@@ -160,6 +166,7 @@ fun TampilanForm(view: View = View()){
         namanya = view.namaUsr,
         telponnya =view.noTlp ,
         jenisnya = view.jenisKl
+
     )
 
 }
@@ -194,6 +201,43 @@ fun SelectJK(
                     onClick = {
                         selectedValue = item
                     onSelectionChanged(item)
+                    }
+                )
+                Text(item)
+            }
+        }
+
+    }
+    Column(modifier = Modifier.padding(16.dp)) {}
+
+}
+@Composable
+fun SelectST(
+    options: List<String>,
+    onSelectionChanged:(String) -> Unit ={}
+){
+    var selectedValue by rememberSaveable{ mutableStateOf("") }
+
+    Column(modifier = Modifier.padding(16.dp)) {
+        options.forEach { item ->
+            Text(text = "Status", fontSize = 18.sp, textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Row (
+                modifier = Modifier.selectable(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectionChanged(item)
+                    }
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                RadioButton(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectionChanged(item)
                     }
                 )
                 Text(item)
