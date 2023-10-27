@@ -80,7 +80,9 @@ fun TampilanLayout(
 fun TampilanForm(view: View = View()){
     var textNama by remember{ mutableStateOf("") }
     var textTlp by remember{ mutableStateOf("") }
-
+    var textem by remember{ mutableStateOf("") }
+    var textamt by remember{ mutableStateOf("") }
+    
     val context = LocalContext.current
     val dataclass : Dataclass
     val uiState by view.uiState.collectAsState()
@@ -106,14 +108,35 @@ fun TampilanForm(view: View = View()){
             textTlp = it
         }
     )
+    OutlinedTextField(
+        value = textem ,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "E-mail")},
+        onValueChange ={
+             textem= it
+        }
+    )
 
-    SelectJK(options = jenis.map { id -> context.resources.getString(id) },
+    SelectJK(
+        options = jenis.map { id -> context.resources.getString(id)},
         onSelectionChanged = {
             view.setJenisK(it)
         })
+    OutlinedTextField(
+        value = textamt ,
+        singleLine = true,
+        shape = MaterialTheme.shapes.large,
+        modifier = Modifier.fillMaxWidth(),
+        label = { Text(text = "Alamat")},
+        onValueChange ={
+            textamt= it
+        }
+    )
     Button(modifier = Modifier.fillMaxWidth(),
         onClick = {
-            view.insertData(textNama,textTlp,dataclass.sex)
+            view.insertData(textNama,textTlp,textem,dataclass.sex)
         }
     ) {
         Text(
@@ -127,7 +150,11 @@ fun TampilanForm(view: View = View()){
         telponnya =view.noTlp ,
         jenisnya = view.jenisKl
     )
+
 }
+
+
+
 
 @Composable
 fun SelectJK(
@@ -157,8 +184,10 @@ fun SelectJK(
                 )
                 Text(item)
             }
+
         }
     }
+
 }
 @Composable
 fun Texthasil(namanya:String,telponnya:String,jenisnya:String){
@@ -169,19 +198,33 @@ fun Texthasil(namanya:String,telponnya:String,jenisnya:String){
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
-            text ="Nama :" + namanya,
+            text ="Nama Lengkap :" + namanya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         )
+
+
         Text(
             text ="Telepon :" + telponnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp)
         )
         Text(
+            text ="E-mail:" ,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 4.dp)
+        )
+
+        Text(
             text ="Jenis Kelamin :" + jenisnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))
+        Text(
+            text ="Status :" ,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 4.dp)
+        )
+
         Text(text = "Alamat :",
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))

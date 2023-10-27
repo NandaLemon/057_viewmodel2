@@ -16,16 +16,19 @@ class View: ViewModel() {
         private  set
     var jenisKl: String by mutableStateOf("")
         private  set
+    var email: String by mutableStateOf("")
+        private  set
     private val _uiState = MutableStateFlow(Dataclass())
 
 
 
     val uiState: StateFlow<Dataclass> = _uiState.asStateFlow()
 
-    fun insertData(nm:String,tlp:String,jk:String){
+    fun insertData(nm:String,tlp:String,jk:String,em:String){
         namaUsr =nm;
         noTlp   =tlp;
         jenisKl = jk;
+        email = em;
     }
 
     fun setJenisK(pilihJK:String){

@@ -3,5 +3,12 @@
     <string name="Laki">Laki-Laki</string>
     <string name="Wanita">Wanita</string>
     <string name="submit">submit</string>
+    <string name="namanya">namanya</string>
+    <string name="telponnya">telponnya</string>
+    <string name="jenisnya">jenisnya</string>
+    <string name="mailnya">mail</string>
+    <string name="menikah">menikah</string>
+    <string name="lajang">lajang</string>
+
 
 </resources>
