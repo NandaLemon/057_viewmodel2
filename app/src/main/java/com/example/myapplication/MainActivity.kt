@@ -144,6 +144,7 @@ fun TampilanForm(view: View = View()){
             textamt= it
         }
     )
+
     Button(modifier = Modifier.fillMaxWidth(),
         onClick = {
             view.insertData(textNama,textTlp,textem,dataclass.sex)
@@ -197,17 +198,17 @@ fun SelectJK(
                 )
                 Text(item)
             }
-
-
         }
+
     }
+    Column(modifier = Modifier.padding(16.dp)) {}
 
 }
 @Composable
 fun Texthasil(namanya:String,telponnya:String,jenisnya:String){
     ElevatedCard(
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
+            defaultElevation = 9.dp
         ),
         modifier = Modifier.fillMaxWidth()
     ) {
